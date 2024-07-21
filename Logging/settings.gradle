@@ -1,0 +1,37 @@
+pluginManagement {
+    repositories {
+        google {
+            content {
+                includeGroupByRegex("com\\.android.*")
+                includeGroupByRegex("com\\.google.*")
+                includeGroupByRegex("androidx.*")
+            }
+        }
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+
+dependencyResolutionManagement {
+//    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven {
+            url 'http://download.flutter.io'
+            allowInsecureProtocol = true
+        }
+//        maven { url 'https://jitpack.io' }
+    }
+}
+
+rootProject.name = "Logging"
+include ':app'
+
+setBinding(new Binding([gradle: this]))
+evaluate(new File(
+        settingsDir.parentFile,
+        'logging_flutter/.android/include_flutter.groovy'
+))
