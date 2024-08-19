@@ -13,15 +13,15 @@ class HomePage extends StatelessWidget {
           children: <Widget>[
             ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/tasks');
+                Navigator.pushNamed(context, '/products');
               },
-              child: Text('Go to Task Page'),
+              child: Text('Go to Product Page'),
             ),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/categories');
+                Navigator.pushNamed(context, '/brands');
               },
-              child: Text('Go to Category Page'),
+              child: Text('Go to Brand Page'),
             ),
             ElevatedButton(
               onPressed: () {

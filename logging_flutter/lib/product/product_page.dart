@@ -1,27 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'category_view_model.dart';
-import 'category.dart';
+import 'product_view_model.dart';
+import 'product.dart';
 
-class CategoryPage extends StatelessWidget {
+class ProductPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Categories'),
+        title: Text('Product Manager'),
       ),
-      body: Consumer<CategoryViewModel>(
+      body: Consumer<ProductViewModel>(
         builder: (context, viewModel, child) {
           return ListView.builder(
-            itemCount: viewModel.categories.length,
+            itemCount: viewModel.products.length,
             itemBuilder: (context, index) {
-              final category = viewModel.categories[index];
+              final product = viewModel.products[index];
               return ListTile(
-                title: Text(category.name),
+                title: Text(product.name),
                 trailing: IconButton(
                   icon: Icon(Icons.delete),
                   onPressed: () {
-                    viewModel.removeCategory(category);
+                    viewModel.removeProduct(product);
                   },
                 ),
               );
@@ -31,8 +31,8 @@ class CategoryPage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          final viewModel = Provider.of<CategoryViewModel>(context, listen: false);
-          viewModel.addCategory(Category('New Category ${viewModel.categories.length + 1}'));
+          final viewModel = Provider.of<ProductViewModel>(context, listen: false);
+          viewModel.addProduct(Product('New Product ${viewModel.products.length + 1}'));
         },
         child: Icon(Icons.add),
       ),

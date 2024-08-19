@@ -1,27 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'task_view_model.dart';
-import 'task.dart';
+import 'brand_view_model.dart';
+import 'brand.dart';
 
-class TaskPage extends StatelessWidget {
+class BrandPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Task Manager'),
+        title: Text('Brands'),
       ),
-      body: Consumer<TaskViewModel>(
+      body: Consumer<BrandViewModel>(
         builder: (context, viewModel, child) {
           return ListView.builder(
-            itemCount: viewModel.tasks.length,
+            itemCount: viewModel.brands.length,
             itemBuilder: (context, index) {
-              final task = viewModel.tasks[index];
+              final brand = viewModel.brands[index];
               return ListTile(
-                title: Text(task.name),
+                title: Text(brand.name),
                 trailing: IconButton(
                   icon: Icon(Icons.delete),
                   onPressed: () {
-                    viewModel.removeTask(task);
+                    viewModel.removeBrand(brand);
                   },
                 ),
               );
@@ -31,8 +31,8 @@ class TaskPage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          final viewModel = Provider.of<TaskViewModel>(context, listen: false);
-          viewModel.addTask(Task('New Task ${viewModel.tasks.length + 1}'));
+          final viewModel = Provider.of<BrandViewModel>(context, listen: false);
+          viewModel.addBrand(Brand('New Brand ${viewModel.brands.length + 1}'));
         },
         child: Icon(Icons.add),
       ),
